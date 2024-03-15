@@ -3,6 +3,7 @@ let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
+let match = document.querySelector(".match");
 
 let turnO = true; //playerX, playerO
 let count = 0; //To Track Draw
@@ -23,6 +24,7 @@ const resetGame = () => {
   count = 0;
   enableBoxes();
   msgContainer.classList.add("hide");
+  match.classList.add("Preview");
 };
 
 boxes.forEach((box) => {
@@ -50,6 +52,7 @@ boxes.forEach((box) => {
 const gameDraw = () => {
   msg.innerText = `Game was a Draw.`;
   msgContainer.classList.remove("hide");
+  match.classList.remove("Preview");
   disableBoxes();
 };
 
@@ -69,6 +72,7 @@ const enableBoxes = () => {
 const showWinner = (winner) => {
   msg.innerText = `Congratulations, Winner is ${winner}`;
   msgContainer.classList.remove("hide");
+  match.classList.remove("Preview");
   disableBoxes();
 };
 
