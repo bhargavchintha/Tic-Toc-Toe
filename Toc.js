@@ -14,7 +14,6 @@ function showOverlay() {
   document.getElementById("start-game").addEventListener("click", function() {
     let playerX = document.getElementById("playerX").value.trim(); 
     let playerO = document.getElementById("playerO").value.trim(); 
-
    
     if (playerX === playerO) {
       alert("Player X and Player O cannot have the same name. Please enter different names.");
