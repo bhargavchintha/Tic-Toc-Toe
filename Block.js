@@ -26,3 +26,7 @@ document.onkeydown = (e) => {
     return false;
   }
 };
+
+// {
+//   "liveServer.settings.port": 5501
+// }
