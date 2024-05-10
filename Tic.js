@@ -101,7 +101,7 @@ const showWinner = (winner) => {
     message = `Congratulations, Winner is ${WinnerName}`;
   }
 
-  // Highlight the winning combination
+  
   for (let pattern of winPatterns) {
     let [pos1, pos2, pos3] = pattern;
     let pos1Val = boxes[pos1].innerText;
@@ -115,14 +115,13 @@ const showWinner = (winner) => {
     }
   }
 
-  // Delay showing the result by 2 seconds
+  
   setTimeout(() => {
     msg.innerHTML = message;
     msgContainer.classList.remove("hide");
     match.classList.remove("Preview");
     disableBoxes();
 
-    // Hide the reset button after 2 seconds
     resetBtn.classList.add('hide');
     setTimeout(() => {
       resetBtn.classList.remove('hide');
@@ -155,6 +154,8 @@ const checkWinner = () => {
     }
   }
 };
+
+
 
 
 document.getElementById("start-X").addEventListener("click", function() {
