@@ -4,9 +4,13 @@ let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
 let match = document.querySelector(".match");
+let playerWins = {
+  X: 0,
+  O: 0
+};
 
-let turnO = true; //playerX, playerO
-let count = 0; //To Track Draw
+let turnO = true; 
+let count = 0; 
 
 const winPatterns = [
   [0, 1, 2],
@@ -25,7 +29,7 @@ const resetGame = () => {
   enableBoxes();
   msgContainer.classList.add("hide");
   match.classList.add("Preview");
-  showOverlay(); // Show overlay to choose starting player after resetting the game
+  showOverlay(); 
 };
 
 boxes.forEach((box) => {
@@ -76,11 +80,24 @@ const getPlayerNames = () => {
   return { playerX, playerO };
 };
 
-// Function to show the winner with the players' names
+
 const showWinner = (winner) => {
   const { playerX, playerO } = getPlayerNames();
   let winnerName = winner === "X" ? playerX : playerO;
-  msg.innerText = `Congratulations, Winner is ${winnerName} ( ${winner} )`;
+  playerWins[winner]++;
+
+  let WinnerName = `<span class="winner">${winnerName} ( ${winner} )</span>`;
+  let timescount =`<spam class = "Timecount">${playerWins[winner]}th</span>`
+
+  if(playerWins[winner] === 2) {
+    msg.innerHTML = ` Congratulations Again ${WinnerName} wins the game!`;
+  }else if (playerWins[winner] === 3) {
+    msg.innerHTML = `Congratulations Once Again ${WinnerName} wins the game!`;
+  } else if (playerWins[winner] > 3) {
+    msg.innerHTML = `Congratulations ${WinnerName} wins the game for the ${timescount} time!`;
+  } else {
+    msg.innerHTML = `Congratulations, Winner is ${WinnerName}`;
+  }
   msgContainer.classList.remove("hide");
   match.classList.remove("Preview");
   disableBoxes();
@@ -101,57 +118,53 @@ const checkWinner = () => {
   }
 };
 
-// Function to show the overlay
+
 function showOverlay() {
   document.getElementById("overlay").style.display = "flex";
 }
 
-// Function to hide the overlay
+
 function hideOverlay() {
   document.getElementById("overlay").style.display = "none";
 }
 
 document.getElementById("player-form").addEventListener("submit", function(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
+  event.preventDefault(); 
   
-  let playerX = document.getElementById("playerX").value.trim(); // Trim whitespace
-  let playerO = document.getElementById("playerO").value.trim(); // Trim whitespace
+  let playerX = document.getElementById("playerX").value.trim(); 
+  let playerO = document.getElementById("playerO").value.trim(); 
 
-  // Check if both players have different names
+  
   if (playerX === playerO) {
     alert("Player X and Player O cannot have the same name. Please enter different names.");
-    return; // Stop execution if names are the same
+    return; 
   }
 
-  // Store player names in local storage
+  
   localStorage.setItem("playerX", playerX);
   localStorage.setItem("playerO", playerO);
 
-  // Hide player names input fields and show the game
+  
   document.querySelector(".player-names").classList.add("hide");
   document.querySelector(".game").classList.remove("hide");
 
-  // Show the Reset Game button
+ 
   document.getElementById("reset-btn").style.display = "inline";
 
-  // Show the overlay to choose starting player
+  
   showOverlay();
 });
 
 document.getElementById("start-X").addEventListener("click", function() {
   localStorage.setItem("startingPlayer", "X");
   hideOverlay();
-  // Start the game with player X
   turnO = false;
-  //document.getElementById("reset-btn").style.display = "none";
 });
 
 document.getElementById("start-O").addEventListener("click", function() {
   localStorage.setItem("startingPlayer", "O");
   hideOverlay();
-  // Start the game with player O
   turnO = true;
- // document.getElementById("reset-btn").style.display = "none";
 });
 
 newGameBtn.addEventListener("click", () => {

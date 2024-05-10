@@ -9,7 +9,8 @@
 </head>
 <body>
   <div class="msg-container hide">
-    <p id="msg">Winner</p>
+    <p id="msg"></p>
+    <p id="msglost"></p>
     <button id="new-btn">New Game</button>
     <a class="Match_Preview" href="#matchpreview">See Match Preview</a>
   </div>
@@ -64,46 +65,7 @@
     </div>
   </div>
   <script src="Tic.js"></script>
-  <script>
-    // Function to show the overlay
-    function showOverlay() {
-      document.getElementById("overlay").classList.remove("hide");
-      document.getElementById("Tic_Toc").classList.add("hide");
-      document.getElementById("reset-btn").classList.add("hide"); // Hide the reset button
-    }
-  
-    // Function to hide the overlay
-    function hideOverlay() {
-      document.getElementById("overlay").classList.add("hide");
-      document.getElementById("Tic_Toc").classList.remove("hide");
-      document.getElementById("reset-btn").classList.remove("hide"); // Show the reset button
-    }
-  
-    document.getElementById("start-game").addEventListener("click", function() {
-      let playerX = document.getElementById("playerX").value.trim(); // Trim whitespace
-      let playerO = document.getElementById("playerO").value.trim(); // Trim whitespace
-  
-      // Check if both players have different names
-      if (playerX === playerO) {
-        alert("Player X and Player O cannot have the same name. Please enter different names.");
-        return; // Stop execution if names are the same
-      }
-  
-      // Store player names in local storage
-      localStorage.setItem("playerX", playerX);
-      localStorage.setItem("playerO", playerO);
-  
-      // Hide player names input fields and show the game
-      document.querySelector(".player-names").classList.add("hide");
-      document.querySelector(".game").classList.remove("hide");
-  
-      // Show the Reset Game button
-      document.getElementById("reset-btn").style.display = "inline";
-  
-      // Show the overlay to choose starting player
-      showOverlay();
-    });
-  </script>
-  
+  <script src="Toc.js" >  </script>
+  <script src="Block.js" ></script>
 </body>
 </html>
