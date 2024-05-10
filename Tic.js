@@ -101,7 +101,7 @@ const showWinner = (winner) => {
     message = `Congratulations, Winner is ${WinnerName}`;
   }
 
-
+  // Highlight the winning combination
   for (let pattern of winPatterns) {
     let [pos1, pos2, pos3] = pattern;
     let pos1Val = boxes[pos1].innerText;
@@ -115,19 +115,25 @@ const showWinner = (winner) => {
     }
   }
 
-  
+  // Delay showing the result by 2 seconds
   setTimeout(() => {
     msg.innerHTML = message;
     msgContainer.classList.remove("hide");
     match.classList.remove("Preview");
     disableBoxes();
-    
+
+    // Hide the reset button after 2 seconds
     resetBtn.classList.add('hide');
     setTimeout(() => {
       resetBtn.classList.remove('hide');
-    }, 1000);
-  }, 1000);
+    }, 500);
+  }, 500);
 };
+
+
+
+
+
 
 
 
@@ -150,42 +156,6 @@ const checkWinner = () => {
   }
 };
 
-
-function showOverlay() {
-  document.getElementById("overlay").style.display = "flex";
-}
-
-
-function hideOverlay() {
-  document.getElementById("overlay").style.display = "none";
-}
-
-document.getElementById("player-form").addEventListener("submit", function(event) {
-  event.preventDefault(); 
-  
-  let playerX = document.getElementById("playerX").value.trim(); 
-  let playerO = document.getElementById("playerO").value.trim(); 
-
-  
-  if (playerX === playerO) {
-    alert("Player X and Player O cannot have the same name. Please enter different names.");
-    return; 
-  }
-
-  
-  localStorage.setItem("playerX", playerX);
-  localStorage.setItem("playerO", playerO);
-
-  
-  document.querySelector(".player-names").classList.add("hide");
-  document.querySelector(".game").classList.remove("hide");
-
- 
-  document.getElementById("reset-btn").style.display = "inline";
-
-  
-  showOverlay();
-});
 
 document.getElementById("start-X").addEventListener("click", function() {
   localStorage.setItem("startingPlayer", "X");
