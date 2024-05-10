@@ -13,50 +13,46 @@
     <button id="new-btn">New Game</button>
     <a class="Match_Preview" href="#matchpreview">See Match Preview</a>
   </div>
-  <main  class="Tic_Text" >
+  <main class="Tic_Text">
     <div class="Tic_Toc_Text">
-    <div class="match Preview">
-      <h1 id="matchpreview" class="Msg_preview"> Match Preview </h1>
-    </div>
-    <h1 class="Hello_Tic" >Tic Tac Toe</h1>
-    <div class="Tic_Container" id="Tic_Toc" >
+      <div class="match Preview">
+        <h1 id="matchpreview" class="Msg_preview"> Match Preview </h1>
+      </div>
+      <h1 class="Hello_Tic">Tic Tac Toe</h1>
+      <div class="Tic_Container" id="Tic_Toc">
         <div class="container">
           <div class="player-names">
             <form id="player-form">
               <div class="X_player">
-                <label for="playerX"  class="Player_Tic" >Player <span class="X_O_Name">X</span></label>
-                <input type="text" minlength="3" id="playerX" required   placeholder="Enter name of X player" />
+                <label for="playerX" class="Player_Tic">Player <span class="X_O_Name">X</span></label>
+                <input type="text" minlength="3" id="playerX" required placeholder="Enter name of X player" />
               </div>
               <div class="O_Player">
-                <label for="playerO"  class="Player_Tic" >Player <span class="X_O_Name">O</span></label>
-                <input type="text" minlength="3" id="playerO" required  placeholder="Enter name of O player"/>
+                <label for="playerO" class="Player_Tic">Player <span class="X_O_Name">O</span></label>
+                <input type="text" minlength="3" id="playerO" required placeholder="Enter name of O player" />
               </div>
-             <div class="Btn_Tic">
+              <div class="Btn_Tic">
                 <button type="submit" id="start-game">Start Game</button>
-             </div>
+              </div>
             </form>
             <p id="error-message"></p>
           </div>
           <div class="game hide">
-            <button class="box"></button>
-            <button class="box"></button>
-            <button class="box"></button>
-            <button class="box"></button>
-            <button class="box"></button>
-            <button class="box"></button>
-            <button class="box"></button>
-            <button class="box"></button>
-            <button class="box"></button>
+            <button class="box box-0"></button>
+            <button class="box box-1"></button>
+            <button class="box box-2"></button>
+            <button class="box box-3"></button>
+            <button class="box box-4"></button>
+            <button class="box box-5"></button>
+            <button class="box box-6"></button>
+            <button class="box box-7"></button>
+            <button class="box box-8"></button>
           </div>
         </div>
-
-    <!-- Reset Game button -->
-    <button id="reset-btn" class="hide">Reset Game</button>
-
-  </div>
-
-</div>
-  </main> 
+        <button id="reset-btn" class="hide">Reset Game</button>
+      </div>
+    </div>
+  </main>
   <div class="overlay hide" id="overlay">
     <div class="overlay-buttons">
       <button class="overlay-button" id="start-X">Start with <span class="X_O_Name">X</span></button>
@@ -64,7 +60,7 @@
     </div>
   </div>
   <script src="Tic.js"></script>
-  <script src="Toc.js" >  </script>
-  <script src="Block.js" ></script>
+  <script src="Toc.js"></script>
+  <!-- <script src="Block.js"></script> -->
 </body>
 </html>

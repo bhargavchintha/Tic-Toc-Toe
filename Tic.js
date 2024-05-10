@@ -71,6 +71,7 @@ const enableBoxes = () => {
   for (let box of boxes) {
     box.disabled = false;
     box.innerText = "";
+    box.classList.remove('win'); // Remove the 'win' class from all boxes
   }
 };
 
@@ -87,21 +88,48 @@ const showWinner = (winner) => {
   playerWins[winner]++;
 
   let WinnerName = `<span class="winner">${winnerName} ( ${winner} )</span>`;
-  let timescount =`<spam class = "Timecount">${playerWins[winner]}th</span>`
+  let timescount = `<span class="Timecount">${playerWins[winner]}th</span>`;
 
-  if(playerWins[winner] === 2) {
-    msg.innerHTML = ` Congratulations Again ${WinnerName} wins the game!`;
-  }else if (playerWins[winner] === 3) {
-    msg.innerHTML = `Congratulations Once Again ${WinnerName} wins the game!`;
+  let message = "";
+  if (playerWins[winner] === 2) {
+    message = ` Congratulations Again ${WinnerName} wins the game!`;
+  } else if (playerWins[winner] === 3) {
+    message = `Congratulations Once Again ${WinnerName} wins the game!`;
   } else if (playerWins[winner] > 3) {
-    msg.innerHTML = `Congratulations ${WinnerName} wins the game for the ${timescount} time!`;
+    message = `Congratulations ${WinnerName} wins the game for the ${timescount} time!`;
   } else {
-    msg.innerHTML = `Congratulations, Winner is ${WinnerName}`;
+    message = `Congratulations, Winner is ${WinnerName}`;
   }
-  msgContainer.classList.remove("hide");
-  match.classList.remove("Preview");
-  disableBoxes();
+
+
+  for (let pattern of winPatterns) {
+    let [pos1, pos2, pos3] = pattern;
+    let pos1Val = boxes[pos1].innerText;
+    let pos2Val = boxes[pos2].innerText;
+    let pos3Val = boxes[pos3].innerText;
+
+    if (pos1Val === winner && pos2Val === winner && pos3Val === winner) {
+      boxes[pos1].classList.add('win');
+      boxes[pos2].classList.add('win');
+      boxes[pos3].classList.add('win');
+    }
+  }
+
+  
+  setTimeout(() => {
+    msg.innerHTML = message;
+    msgContainer.classList.remove("hide");
+    match.classList.remove("Preview");
+    disableBoxes();
+    
+    resetBtn.classList.add('hide');
+    setTimeout(() => {
+      resetBtn.classList.remove('hide');
+    }, 1000);
+  }, 1000);
 };
+
+
 
 const checkWinner = () => {
   for (let pattern of winPatterns) {
@@ -109,11 +137,15 @@ const checkWinner = () => {
     let pos2Val = boxes[pattern[1]].innerText;
     let pos3Val = boxes[pattern[2]].innerText;
 
-    if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
-      if (pos1Val === pos2Val && pos2Val === pos3Val) {
-        showWinner(pos1Val);
-        return true;
-      }
+    if (pos1Val !== "" && pos1Val === pos2Val && pos2Val === pos3Val) {
+
+      boxes[pattern[0]].classList.add("winning-box");
+      boxes[pattern[1]].classList.add("winning-box");
+      boxes[pattern[2]].classList.add("winning-box");
+      
+      
+      showWinner(pos1Val);
+      return true;
     }
   }
 };
@@ -173,4 +205,5 @@ newGameBtn.addEventListener("click", () => {
 
 resetBtn.addEventListener("click", () => {
   resetGame();
+  
 });

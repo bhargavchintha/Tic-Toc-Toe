@@ -227,3 +227,13 @@ button#reset-btn{
   .Timecount{
     color: dodgerblue;
   }
+  .win {
+    background-color: red; /* or any other style you prefer */
+    border: 4px solid red; 
+    color: #fff;
+  }
+  .winning-line {
+   position: relative;
+    height: 2px;
+    background-color: red;
+  }
