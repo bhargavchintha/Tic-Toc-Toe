@@ -1,42 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="Tic_Toc_Toe.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tic-Tac-Toe Game</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="msg-container hide">
-      <p id="msg">Winner</p>
-      <button id="new-btn">New Game</button>
-       <a class="Match_Preview" href="#matchpreview">See Match Preview</a>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="Tic_Toc_Toe.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="msg-container hide">
+    <p id="msg">Winner</p>
+    <button id="new-btn">New Game</button>
+    <a class="Match_Preview" href="#matchpreview">See Match Preview</a>
+  </div>
+  <main  class="Tic_Text" >
+    <div class="Tic_Toc_Text">
+    <div class="match Preview">
+      <h1 id="matchpreview" class="Msg_preview"> Match Preview </h1>
     </div>
-    <main>
-      <div class="match Preview">
-        <h1 id="matchpreview" class="Msg_preview"> Match Preview </h1>
-      </div>
-      <h1>Tic Tac Toe</h1>
-      <div class="container">
-
-        
-        <div class="game">
-          <button class="box"></button>
-          <button class="box"></button>
-          <button class="box"></button>
-          <button class="box"></button>
-          <button class="box"></button>
-          <button class="box"></button>
-          <button class="box"></button>
-          <button class="box"></button>
-          <button class="box"></button>
+    <h1>Tic Tac Toe</h1>
+    <div class="Tic_Container" id="Tic_Toc" >
+        <div class="container">
+          <div class="player-names">
+            <form id="player-form">
+              <div class="X_player">
+                <label for="playerX"  class="Player_Tic" >Player <span class="X_O_Name">X</span></label>
+                <input type="text" minlength="3" id="playerX" required   placeholder="Enter name of X player" />
+              </div>
+              <div class="O_Player">
+                <label for="playerO"  class="Player_Tic" >Player <span class="X_O_Name">O</span></label>
+                <input type="text" minlength="3" id="playerO" required  placeholder="Enter name of O player"/>
+              </div>
+             <div class="Btn_Tic">
+                <button type="submit" id="start-game">Start Game</button>
+             </div>
+            </form>
+            <p id="error-message"></p>
+          </div>
+          <div class="game hide">
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+          </div>
         </div>
 
+    <!-- Reset Game button -->
+    <button id="reset-btn" class="hide">Reset Game</button>
 
-      </div>
-      <button id="reset-btn">Reset Game</button>
-    </main>
-    <script src="Tic.js"></script>
-  </body>
+  </div>
+
+</div>
+  </main> 
+  <div class="overlay hide" id="overlay">
+    <div class="overlay-buttons">
+      <button class="overlay-button" id="start-X">Start with <span class="X_O_Name">X</span></button>
+      <button class="overlay-button" id="start-O">Start with <span class="X_O_Name">O</span></button>
+    </div>
+  </div>
+  <script src="Tic.js"></script>
+  <script>
+    // Function to show the overlay
+    function showOverlay() {
+      document.getElementById("overlay").classList.remove("hide");
+      document.getElementById("Tic_Toc").classList.add("hide");
+      document.getElementById("reset-btn").classList.add("hide"); // Hide the reset button
+    }
+  
+    // Function to hide the overlay
+    function hideOverlay() {
+      document.getElementById("overlay").classList.add("hide");
+      document.getElementById("Tic_Toc").classList.remove("hide");
+      document.getElementById("reset-btn").classList.remove("hide"); // Show the reset button
+    }
+  
+    document.getElementById("start-game").addEventListener("click", function() {
+      let playerX = document.getElementById("playerX").value.trim(); // Trim whitespace
+      let playerO = document.getElementById("playerO").value.trim(); // Trim whitespace
+  
+      // Check if both players have different names
+      if (playerX === playerO) {
+        alert("Player X and Player O cannot have the same name. Please enter different names.");
+        return; // Stop execution if names are the same
+      }
+  
+      // Store player names in local storage
+      localStorage.setItem("playerX", playerX);
+      localStorage.setItem("playerO", playerO);
+  
+      // Hide player names input fields and show the game
+      document.querySelector(".player-names").classList.add("hide");
+      document.querySelector(".game").classList.remove("hide");
+  
+      // Show the Reset Game button
+      document.getElementById("reset-btn").style.display = "inline";
+  
+      // Show the overlay to choose starting player
+      showOverlay();
+    });
+  </script>
+  
+</body>
 </html>

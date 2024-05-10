@@ -73,7 +73,9 @@
   }
 
   button#reset-btn,
-  button#new-btn{
+  button#new-btn,
+  button#start-game,
+  button.overlay-button{
     margin: 10px;
     padding: 15px 30px;
     text-align: center;
@@ -93,7 +95,9 @@
   }
   
   button#reset-btn:hover,
-  button#new-btn:hover {
+  button#new-btn:hover,
+  button#start-game:hover,
+  button.overlay-button:hover {
     background-position: right center;
     color: #fff;
     text-decoration: none;
@@ -101,8 +105,10 @@
   }
   
   button#reset-btn:active,
-  button#new-btn:active {
-    transform: scale(0.95);
+  button#new-btn:active,
+  button#start-game:active,
+  button.overlay-button:active {
+    transform: scale(1.2);
   }
 
 button#reset-btn{
@@ -138,4 +144,62 @@ button#reset-btn{
   .Match_Preview:active {
     transform: scale(0.95);
   }
-  
+
+  #reset-btn {
+    display: none;
+  }
+
+  #error-message {
+    display: none;
+    color: red;
+  }
+  .Tic_Text{
+    width: 100%;
+    margin: auto;
+  }
+  div.Tic_Toc_Text{
+    width: 80%;
+    margin: auto;
+  }
+  div.O_Player,
+  div.X_player{
+    margin-top: 15px;
+  }
+  label.Player_Tic{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+  }
+  input[type=text]{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px 17px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    outline: none;
+    color: #000;
+    font-size: 18px;
+  }
+  input[type=text]:hover,
+  input[type=text]:focus{
+    box-shadow: 0 0px 2px 3px dodgerblue;
+    border: 1px solid dodgerblue;
+    outline: 1px solid blue;
+  }
+  div.Btn_Tic{
+    margin-top: 10px;
+  }
+  button#start-game:hover{
+    box-shadow: 0 0 4px dodgerblue !important;
+    color: dodgerblue !important;
+  }
+  div.overlay-buttons{
+    margin-top: 20px;
+  }
+  span.X_O_Name{
+    color: dodgerblue;
+    font-size: 20px;
+  }
