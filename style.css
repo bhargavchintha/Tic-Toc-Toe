@@ -31,7 +31,11 @@
     text-shadow: 0px 1px 0px #ffffc7;
     margin-bottom: 0px;
   }
-  
+  @media screen and (max-width:500px) {
+    h1.Msg_preview{
+      font-size: 25px;
+    }
+  }
   .game {
     height: 60vmin;
     width: 60vmin;
