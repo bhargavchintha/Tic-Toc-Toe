@@ -122,6 +122,7 @@
     color: #fff;
     text-decoration: none;
     box-shadow: 0px 0px 14px -7px #fff;
+    transform: scale(1.2);
   }
   
   button#reset-btn:active,
@@ -159,6 +160,7 @@ button#reset-btn{
     color: #fff;
     text-decoration: none;
     box-shadow: 0px 0px 14px -7px #fff;
+    transform: scale(1.2);
   }
   
   .Match_Preview:active {
@@ -215,6 +217,7 @@ button#reset-btn{
   button#start-game:hover{
     box-shadow: 0 0 4px dodgerblue !important;
     color: dodgerblue !important;
+    transform: scale(1.2);
   }
   div.overlay-buttons{
     margin-top: 20px;
@@ -246,7 +249,8 @@ button#reset-btn{
 span.Smile_R{
   display: inline-block;
   transform: rotate(91deg);
-  margin-left: 2px;
+  margin-left: 8px;
+  color: dodgerblue;
 }
 
   

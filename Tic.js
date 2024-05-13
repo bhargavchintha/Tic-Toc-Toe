@@ -57,7 +57,7 @@ let boxes = document.querySelectorAll(".box");
      let smile =`<span class="Smile_R">:)</span> ` 
 
     const gameDraw = () => {
-      msg.innerHTML = `Game was a Draw ${smile} .`;
+      msg.innerHTML = `Game was a Draw ${smile}`;
       msgContainer.classList.remove("hide");
       match.classList.remove("Preview");
       disableBoxes();
@@ -169,7 +169,7 @@ let boxes = document.querySelectorAll(".box");
       document.getElementById("overlay").classList.remove("hide");
       document.getElementById("Tic_Toc").classList.add("hide");
       document.getElementById("reset-btn").classList.add("hide"); 
-      document.getElementById("reset-btn").style.display = "none.";
+      document.getElementById("reset-btn").style.display = "none";
     }
   
     
