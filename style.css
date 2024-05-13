@@ -58,6 +58,7 @@
     font-size: 8vmin;
     color: #000;
     background-color: #fff;
+    cursor:pointer ;
   }
    
   #msg {
