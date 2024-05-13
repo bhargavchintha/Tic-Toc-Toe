@@ -54,8 +54,10 @@ let boxes = document.querySelectorAll(".box");
       });
     });
 
+     let smile =`<span class="Smile_R">:)</span> ` 
+
     const gameDraw = () => {
-      msg.innerText = `Game was a Draw.`;
+      msg.innerHTML = `Game was a Draw ${smile} .`;
       msgContainer.classList.remove("hide");
       match.classList.remove("Preview");
       disableBoxes();
@@ -163,33 +165,38 @@ let boxes = document.querySelectorAll(".box");
       resetGame();
     });
 
-    document.getElementById("start-game").addEventListener("click", function(e) {
-      e.preventDefault();
+    function showOverlay() {
+      document.getElementById("overlay").classList.remove("hide");
+      document.getElementById("Tic_Toc").classList.add("hide");
+      document.getElementById("reset-btn").classList.add("hide"); 
+      document.getElementById("reset-btn").style.display = "none.";
+    }
+  
+    
+    function hideOverlay() {
+      document.getElementById("overlay").classList.add("hide");
+      document.getElementById("Tic_Toc").classList.remove("hide");
+      document.getElementById("reset-btn").classList.remove("hide"); 
+     document.getElementById("reset-btn").style.display = "inline";
+    }
+  
+    document.getElementById("start-game").addEventListener("click", function() {
       let playerX = document.getElementById("playerX").value.trim(); 
       let playerO = document.getElementById("playerO").value.trim(); 
-
+     
       if (playerX === playerO) {
         alert("Player X and Player O cannot have the same name. Please enter different names.");
         return; 
       }
-
+  
+    
       localStorage.setItem("playerX", playerX);
       localStorage.setItem("playerO", playerO);
-
+      
       document.querySelector(".player-names").classList.add("hide");
       document.querySelector(".game").classList.remove("hide");
-      
-      document.getElementById("reset-btn").classList.remove("hide");
-
+     
+     // document.getElementById("reset-btn").style.display = "inline";
+  
       showOverlay();
     });
-
-    function showOverlay() {
-      document.getElementById("overlay").classList.remove("hide");
-      document.getElementById("Tic_Toc").classList.add("hide");
-    }
-
-    function hideOverlay() {
-      document.getElementById("overlay").classList.add("hide");
-      document.getElementById("Tic_Toc").classList.remove("hide");
-    }

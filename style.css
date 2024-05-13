@@ -228,7 +228,7 @@ button#reset-btn{
     color: dodgerblue;
   }
   .win {
-    background-color: black; /* or any other style you prefer */
+    background-color: black; 
     border: 4px solid red; 
     color: #fff;
   }
@@ -239,10 +239,14 @@ button#reset-btn{
   }
   .win-line {
     position: absolute;
-    width: 5px; /* Adjust as needed */
-    background-color: dodgerblue; /* Adjust color as needed */
-    z-index: 999999; /* Ensure the line is above the boxes */
+    width: 5px; 
+    background-color: dodgerblue;
+    z-index: 999999; 
   }
-
+span.Smile_R{
+  display: inline-block;
+  transform: rotate(91deg);
+  margin-left: 2px;
+}
 
   
